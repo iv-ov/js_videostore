@@ -2,15 +2,12 @@
 
 function statement(customer, movies) {
     let totalAmount = getTotalAmount(customer.rentals);
-    let totalFrequentRenterPoints = 0;
+    let totalFrequentRenterPoints = getTotalFrequentRenterPoints(customer.rentals);
     let result = `Rental Record for ${customer.name}\n`;
 
     for (let rental of customer.rentals) {
         let movie = getMovieForRental(rental);
         let thisAmount = getAmount(rental);
-
-        //add frequent renter points
-        totalFrequentRenterPoints += getFrequentRenterPoints(rental);
 
         //print figures for this rental
         result += `\t${movie.title}\t${thisAmount}\n`;
@@ -66,6 +63,14 @@ function statement(customer, movies) {
         let movie = getMovieForRental(rental);
         // add bonus for a two day new release rental
         return (movie.code === "new" && rental.days > 2) ? 2 : 1;
+    }
+
+    function getTotalFrequentRenterPoints(rentals) {
+        let totalFrequentRenterPoints = 0;
+        for (let rental of rentals) {
+            totalFrequentRenterPoints += getFrequentRenterPoints(rental);
+        }
+        return totalFrequentRenterPoints;
     }
 
 }
