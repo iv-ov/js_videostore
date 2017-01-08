@@ -10,6 +10,12 @@ end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 
+# "Experimental" (barely supported) properties
+[*]
+spaces_around_operators = true
+spaces_around_brackets = outside
+indent_brace_style = K&R
+
 # Set default charset
 [*]
 charset = utf-8
