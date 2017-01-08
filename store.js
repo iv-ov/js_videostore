@@ -69,4 +69,18 @@ let movies = {
     // etc
 };
 
-console.log(statement(customer, movies));
+/**
+ * Temporal test for refactoring (to simplify result checking)
+ * @param {string} actualResult - actually obtained result
+ * @returns {Boolean}
+ */
+let testForStatementResult = function(actualResult) {
+    let expectedResult = 'Rental Record for martin\n\tRan\t3.5\n\tTrois Couleurs: Bleu\t2\nAmount owed is 5.5\nYou earned 2 frequent renter points\n';
+    if (actualResult !== expectedResult) {
+        throw new Error('Result value changed\n\nEXPECTED:\n' + expectedResult + '\n\nOBTAINED:\n' + actualResult);
+    }
+};
+
+let statementResult = statement(customer, movies);
+testForStatementResult(statementResult);
+console.log(statementResult);
