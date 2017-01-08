@@ -60,8 +60,7 @@ function statement(customer, movies) {
     function getTotalAmount(rentals) {
         let totalAmount = 0;
         for (let rental of rentals) {
-            let thisAmount = getAmount(rental);
-            totalAmount += thisAmount;
+            totalAmount += getAmount(rental);
         }
         return totalAmount;
     }
