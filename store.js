@@ -1,11 +1,14 @@
 "use strict";
 
-function statement(customer, movies) {
+function statement(customer, movies, format) {
     let totalAmount = getTotalAmount(customer.rentals);
     let totalFrequentRenterPoints = getTotalFrequentRenterPoints(customer.rentals);
     //get figures for each rental
     let figuresList = getFiguresList(customer.rentals);
 
+    if (format === 'html') {
+        return statementViewHtml(customer, figuresList, totalAmount, totalFrequentRenterPoints);
+    }
     return statementViewTxt(customer, figuresList, totalAmount, totalFrequentRenterPoints);
 
 
