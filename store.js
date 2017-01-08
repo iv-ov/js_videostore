@@ -3,14 +3,22 @@
 function statement(customer, movies) {
     let totalAmount = getTotalAmount(customer.rentals);
     let totalFrequentRenterPoints = getTotalFrequentRenterPoints(customer.rentals);
-    let result = `Rental Record for ${customer.name}\n`;
 
+    let figuresList = [];
     for (let rental of customer.rentals) {
         let movie = getMovieForRental(rental);
         let thisAmount = getAmount(rental);
+        figuresList.push({
+            title: movie.title,
+            amount: thisAmount
+        });
+    }
 
+    let result = `Rental Record for ${customer.name}\n`;
+
+    for (let figure of figuresList) {
         //print figures for this rental
-        result += `\t${movie.title}\t${thisAmount}\n`;
+        result += `\t${figure.title}\t${figure.amount}\n`;
     }
     // add footer lines
     result += `Amount owed is ${totalAmount}\n`;
