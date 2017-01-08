@@ -22,6 +22,23 @@ function statement(customer, movies) {
         return result;
     }
 
+
+    function statementViewHtml(customer, figuresList, totalAmount, totalFrequentRenterPoints) {
+        let result = `<h3>Rental Record for ${customer.name}</h3>`;
+        //print figures for each rental
+        result += '<dl>';
+        for (let figure of figuresList) {
+            result += `<dt>${figure.title}</dt>`;
+            result += `<dd>${figure.amount}</dd>`;
+        }
+        result += '</dl>';
+        // add footer lines
+        result += `<p>Amount owed is <b>${totalAmount}</b></p>`;
+        result += `<p>You earned <b>${totalFrequentRenterPoints}</b> frequent renter points</p>`;
+
+        return result;
+    }
+
     function getMovieForRental(rental) {
         return movies[rental.movieID];
     }
