@@ -76,10 +76,9 @@ function statement(customer, movies) {
         let figuresList = [];
         for (let rental of rentals) {
             let movie = getMovieForRental(rental);
-            let thisAmount = getAmount(rental);
             figuresList.push({
                 title: movie.title,
-                amount: thisAmount
+                amount: getAmount(rental)
             });
         }
         return figuresList;
