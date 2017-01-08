@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 function statement(customer, movies) {
     let totalAmount = 0;
@@ -46,14 +46,16 @@ function statement(customer, movies) {
 
 let customer = {
     name: "martin",
-    rentals: [{
+    rentals: [
+        {
             "movieID": "F001",
             "days": 3
         }, {
             "movieID": "F002",
             "days": 1
-        }, ]
-}
+        }
+    ]
+};
 
 let movies = {
     "F001": {
@@ -63,8 +65,8 @@ let movies = {
     "F002": {
         "title": "Trois Couleurs: Bleu",
         "code": "regular"
-    },
+    }
     // etc
-}
+};
 
-console.log(statement(customer, movies))
+console.log(statement(customer, movies));
