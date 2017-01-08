@@ -6,7 +6,7 @@ function statement(customer, movies) {
     let result = `Rental Record for ${customer.name}\n`;
     for (let rental of customer.rentals) {
         let movie = getMovieForRental(rental);
-        let thisAmount = getAmountForMovie(rental);
+        let thisAmount = getAmount(rental);
 
         //add frequent renter points
         totalFrequentRenterPoints++;
@@ -34,7 +34,7 @@ function statement(customer, movies) {
      * @param {Object} rental
      * @returns {Number}
      */
-    function getAmountForMovie(rental) {
+    function getAmount(rental) {
         let movie = getMovieForRental(rental);
         let thisAmount = 0;
         switch (movie.code) {
