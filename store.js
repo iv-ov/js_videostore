@@ -3,16 +3,7 @@
 function statement(customer, movies) {
     let totalAmount = getTotalAmount(customer.rentals);
     let totalFrequentRenterPoints = getTotalFrequentRenterPoints(customer.rentals);
-
-    let figuresList = [];
-    for (let rental of customer.rentals) {
-        let movie = getMovieForRental(rental);
-        let thisAmount = getAmount(rental);
-        figuresList.push({
-            title: movie.title,
-            amount: thisAmount
-        });
-    }
+    let figuresList = getFiguresList(customer.rentals);
 
     let result = `Rental Record for ${customer.name}\n`;
 
@@ -81,6 +72,18 @@ function statement(customer, movies) {
         return totalFrequentRenterPoints;
     }
 
+    function getFiguresList(rentals) {
+        let figuresList = [];
+        for (let rental of rentals) {
+            let movie = getMovieForRental(rental);
+            let thisAmount = getAmount(rental);
+            figuresList.push({
+                title: movie.title,
+                amount: thisAmount
+            });
+        }
+        return figuresList;
+    }
 }
 
 let customer = {
@@ -113,7 +116,7 @@ let movies = {
  * @param {string} actualResult - actually obtained result
  * @returns {Boolean}
  */
-let testForStatementResult = function(actualResult) {
+let testForStatementResult = function (actualResult) {
     let expectedResult = 'Rental Record for martin\n\tRan\t3.5\n\tTrois Couleurs: Bleu\t2\nAmount owed is 5.5\nYou earned 2 frequent renter points\n';
     if (actualResult !== expectedResult) {
         throw new Error('Result value changed\n\nEXPECTED:\n' + expectedResult + '\n\nOBTAINED:\n' + actualResult);
