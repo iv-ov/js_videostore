@@ -3,20 +3,24 @@
 function statement(customer, movies) {
     let totalAmount = getTotalAmount(customer.rentals);
     let totalFrequentRenterPoints = getTotalFrequentRenterPoints(customer.rentals);
+    //get figures for each rental
     let figuresList = getFiguresList(customer.rentals);
 
-    let result = `Rental Record for ${customer.name}\n`;
+    return statementViewTxt(customer, figuresList, totalAmount, totalFrequentRenterPoints);
 
-    for (let figure of figuresList) {
-        //print figures for this rental
-        result += `\t${figure.title}\t${figure.amount}\n`;
+
+    function statementViewTxt(customer, figuresList, totalAmount, totalFrequentRenterPoints) {
+        let result = `Rental Record for ${customer.name}\n`;
+        //print figures for each rental
+        for (let figure of figuresList) {
+            result += `\t${figure.title}\t${figure.amount}\n`;
+        }
+        // add footer lines
+        result += `Amount owed is ${totalAmount}\n`;
+        result += `You earned ${totalFrequentRenterPoints} frequent renter points\n`;
+
+        return result;
     }
-    // add footer lines
-    result += `Amount owed is ${totalAmount}\n`;
-    result += `You earned ${totalFrequentRenterPoints} frequent renter points\n`;
-
-    return result;
-
 
     function getMovieForRental(rental) {
         return movies[rental.movieID];
