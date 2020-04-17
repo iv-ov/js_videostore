@@ -148,4 +148,4 @@ let testForStatementResult = function (actualResult) {
 
 let statementResult = statement(customer, movies);
 testForStatementResult(statementResult);
-console.log(statementResult);
+console.log('statementResult = ', statementResult);
