@@ -5,6 +5,9 @@
   "main": "",
   "repository": "",
   "author": "iv-ov",
+  "scripts": {
+    "test": "echo 'Test stub . . . . . . . . . . . . Done)'"
+  },
   "dependencies": {
   }
 }
